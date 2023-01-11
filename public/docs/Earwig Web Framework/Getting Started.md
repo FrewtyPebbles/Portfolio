@@ -1,0 +1,20 @@
+# Earwig 0.11.2
+**NOTE: This software is in a beta version, we cannot at this time ensure its stability.**
+
+ Earwig is an http server that enables you serve _.py_ and _.ear_ source files alot like how _.php_ source files are served.
+
+## How To Get Started (Basic)
+
+ Earwig is easy to setup and get working with only a few steps:
+1. Go into your __settings.txt__ file and change the default port to your desired port.
+2. Make a new file with a __.py__ extension.
+3. Now add that file as a route by adding a line to your __settings.txt__ following the format: _UrlRoute=filepathWithExtension_
+4. Now run your server by entering the following into a terminal:
+```cli
+py earwig.py
+```
+If all was done correctly, you should be able to find your server hosted at [http://localhost:8000/](http://localhost:8000/) (Assuming you used port 8000)
+
+## How Earwig Works (Abridged)
+
+Earwig redirects the python stdout to the http response for incoming http requests.  In other words, anything that is __print()__ed in your earwig page files will be rendered/be the response for the requested url.

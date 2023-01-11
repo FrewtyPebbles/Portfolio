@@ -1,0 +1,18 @@
+/!/ Server Settings:
+port=8000
+ip=localhost
+devmode=true
+/!/ Json User Defined Settings:
+hashedAuthParameters~["password"]
+/!/ Init File:
+@_boot_.py
+/!/ Forbidden File Extensions:
+!ear
+!py
+!db
+!EWS
+/!/ Startup Routes:
+~=API/root.py
+make=API/makePaste.py
+login=API/login.py
+signup=API/signup.py

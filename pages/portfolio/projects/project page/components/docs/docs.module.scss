@@ -1,0 +1,36 @@
+.Docs {
+	&Section {
+		background-color: rgb(88, 88, 88);
+		&:hover {
+			background-color: rgb(128, 128, 128);
+			cursor: pointer;
+			user-select: none;
+		}
+	}
+	background-color: rgb(29, 29, 29);
+	h1 {
+		font-size: larger;
+	}
+	h2 {
+		font-size: large;
+	}
+	h3 {
+		font-size: medium;
+	}
+	li {
+		padding: 10px;
+		
+	}
+	hr {
+		border-color: gray;
+	}
+	pre {
+		background-color: rgb(36, 36, 36);
+		padding: 10px;
+		margin: 5px;
+		white-space: pre-wrap;
+	}
+	code {
+		white-space: pre-wrap;
+	}
+}

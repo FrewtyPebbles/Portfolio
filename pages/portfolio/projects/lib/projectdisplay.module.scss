@@ -1,0 +1,95 @@
+$col1:rgb(53, 53, 53);
+$col2:rgb(19, 19, 19);
+.Folder {
+	&Wrapper {
+		&:hover {
+			cursor: pointer;
+		}
+		&:has( + .FolderWrapper div:not(:only-child), + .Display)
+		{
+			> .FolderInsides {
+				border-radius: 0;
+			}
+		}
+		&:has( .FolderOpen) + .FolderWrapper:has( .FolderOpen) {
+			> .FolderOpen {
+				border-radius: 0;
+			}
+		}
+	}
+	&Open {
+		&:hover {
+			background-image: linear-gradient(to right, $col1, $col2, $col2, $col2);
+		}
+		&::before {
+			content: "📂";
+		}
+		background-color: $col1;
+		border-radius: 10px 0 0 0;
+	}
+	&Closed {
+		&:hover {
+			background-color: $col1;
+			border-radius: 10px;
+		}
+		&::before {
+			content: "📂";
+		}
+	}
+	&Insides {
+		margin-left: 0px;
+		border-color: $col1;
+		border-style: none none none solid;
+		border-radius: 0 0 0 10px;
+		border-width: 5px;
+		padding-left: 10px;
+		//padding-left: 10px;
+	}
+}
+.File {
+	margin-left: 10px;
+	&:hover {
+		background-image: linear-gradient(to right, rgb(0,0,0), $col1, $col1, $col1, $col1, $col1, $col1, $col1, $col1, $col1);
+	}
+}
+
+.Display {
+	border-color: rgb(177, 177, 177);
+	border-style: solid solid solid none;
+	&::before {
+		content: attr(file-path);
+		border-style:solid;
+		border-color:  rgb(177, 177, 177);
+		padding: 0 30px;
+	}
+	&Line {
+		display: flex;
+		justify-content: stretch;
+		&Num {
+			
+			border-style: none solid none none;
+			border-color: $col1;
+			width: 50px;
+			min-width: 50px;
+			max-width: 50px;
+			border-style: none solid;
+			border-color: rgb(177, 177, 177);
+			text-align: right;
+			padding-right: 5px;
+			user-select: none;
+		}
+		&Line {
+			height: fit-content;
+			pre {
+				white-space: pre-wrap;       /* css-3 */
+				white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+				white-space: -pre-wrap;      /* Opera 4-6 */
+				white-space: -o-pre-wrap;    /* Opera 7 */
+				word-wrap: break-word;
+				padding: 3px;
+				margin: 1px 0 0 0;
+				tab-size: 4;
+			}
+		}
+	}
+}

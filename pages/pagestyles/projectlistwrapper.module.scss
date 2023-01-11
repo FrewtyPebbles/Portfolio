@@ -1,0 +1,30 @@
+.PageGrid {
+	color: white;
+	height: 100%;
+	.ContentParent {
+		height: 100%;
+		width: 100%;
+		//animation: content-fadein 1s;
+		&Hidden {
+			//animation: content-fadeout 1s;
+		}
+	}
+}
+
+
+@keyframes content-fadeout {
+	0% {
+		opacity: 100%;
+	}
+	100% {
+		opacity: 0%;
+	}
+}
+@keyframes content-fadein {
+	0% {
+		opacity: 0%;
+	}
+	100% {
+		opacity: 100%;
+	}
+}

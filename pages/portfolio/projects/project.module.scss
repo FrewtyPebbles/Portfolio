@@ -1,0 +1,239 @@
+@mixin listParentStyle($state) {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	bottom: 0;
+	$color: 200;
+	border-radius: 0;
+	@if $state == open {
+		animation: list-appear 1s;
+	}
+	@else { //close
+		animation: list-disappear 1s;
+	}
+}
+
+.Project {
+	&List {
+		@include listParentStyle(open);
+		&Closing {
+			@include listParentStyle(close);
+		}
+		&Closed {
+			bottom: 0;
+			user-select: none;
+			position:fixed;
+			background-color: rgb(27, 27, 27);
+			width: fit-content;
+			color: white;
+			padding: 10px;
+			border-radius: 0 10px 0 0;
+			border-style: solid;
+			border-color: black;
+			&:hover {
+				//background-color: rgb(0, 0, 0);
+				color: rgb(153, 153, 153);
+				cursor: pointer;
+			}
+		}
+		&Title {
+			user-select: none;
+			$title-color: 27;
+			background-color: rgb($title-color, $title-color, $title-color);
+			border-radius: 0;
+			padding: 10px;
+			color: white;
+			display: flex;
+			justify-content: space-between;
+			&Title {
+				flex-grow: 1;
+				&:hover {
+					cursor: pointer;
+					color: rgb(153, 153, 153);
+				}
+			}
+			&Search {
+				padding-left: 30px;
+				&Input {
+					&::placeholder {
+						display: default;
+					}
+					color:black;
+					padding: 5px;
+					border-radius: 5px;
+					&:focus {
+						outline: none;
+						$focus-color: 50;
+						color: white;
+						background-color: rgb($focus-color, $focus-color, $focus-color);
+					}
+				}
+			}
+		}
+
+		&List {
+			overflow-y: auto;
+			flex-grow: 1;
+			background-color: rgb(27, 27, 27);
+			color: white;
+			border-radius: 0;
+			padding: 5px;
+			&::-webkit-scrollbar {
+				display: none;
+			}
+		}
+	}
+
+	&Item {
+		animation: project-appear 500ms;
+		$item-background: 100;
+		background-color: rgb($item-background, $item-background, $item-background);
+		padding: 10px;
+		border-radius: 5px;
+
+		&:not(:first-of-type) {
+			margin-top: 5px;
+		}
+
+		&:last-of-type {
+			border-radius: 5px 5px 10px 10px;
+		}
+
+		display: grid;
+		gap: 10px;
+		grid-template-columns: 100px 1fr;
+		grid-template-areas: "icon description"
+		"taglist taglist";
+
+		&Icon {
+			grid-area: icon;
+			height: 100px;
+		}
+
+		&Description {
+			grid-area: description;
+
+			&Title {
+				padding: 10px;
+			}
+
+			&Description {
+				padding: 5px;
+			}
+		}
+
+		&Taglist {
+			grid-area: taglist;
+
+			&::before {
+				content: "Tags: ";
+				padding: 3px;
+			}
+
+			display: flex;
+			flex-wrap: wrap;
+			width: 100%;
+
+			&Tag {
+				background-color: white;
+				color: black;
+				border-radius: 3px;
+				margin: 3px 5px;
+				padding: 0 3px;
+				user-select: none;
+				&:hover {
+					cursor: pointer;
+					$color: 50;
+					background-color: rgb($color, $color, $color);
+					color: white;
+				}
+			}
+		}
+	}
+}
+
+@keyframes project-appear {
+	from {
+		width: 0;
+		height: 157px;
+		overflow: hidden;
+	}
+
+	to {
+		width: 100%;
+		height: 157px;
+		overflow: hidden;
+	}
+}
+
+@keyframes list-appear {
+	0% {
+		width: 100px;
+		border-radius: 0 10px 0 0;
+		background-color: rgb(27, 27, 27);
+		height: 47px;
+		overflow: hidden;
+		position:fixed;
+		border-style: solid;
+		border-color: black;
+		//opacity: 0;
+	}
+	50% {
+		width: 100%;
+		border-radius: 0;
+		background-color: rgb(27, 27, 27);
+		height: 47px;
+		overflow: hidden;
+		position:fixed;
+		border-style: solid;
+		border-color: rgb(27, 27, 27);
+		//opacity: 0;
+	}
+
+	100% {
+		width: 100%;
+		background-color: white;
+		border-radius: 0;
+		height: 100%;
+		//opacity: 100%;
+		border-style: solid;
+		border-color: rgb(27, 27, 27);
+		overflow: hidden;
+		position:fixed;
+	}
+}
+@keyframes list-disappear {
+	0% {
+		width: 100%;
+		background-color: white;
+		border-radius: 0;
+		height: 100%;
+		border-style: solid;
+		border-color: rgb(27, 27, 27);
+		//opacity: 100%;
+		overflow: hidden;
+		position: absolute;
+	}
+	50% {
+		width: 100%;
+		border-radius: 0 0 0 0;
+		background-color: rgb(27, 27, 27);
+		height: 47px;
+		overflow: hidden;
+		border-style: solid;
+		border-color: rgb(27, 27, 27);
+		position: absolute;
+		//opacity: 0;
+	}
+	100% {
+		width: 90px;
+		border-radius: 0 10px 0 0;
+		background-color: rgb(27, 27, 27);
+		height: 47px;
+		overflow: hidden;
+		border-style: solid;
+		border-color: black;
+		position: absolute;
+		//opacity: 0;
+	}
+}
