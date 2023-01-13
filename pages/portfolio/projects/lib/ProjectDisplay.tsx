@@ -82,7 +82,11 @@ export default function projectdisplay(props:{parent_file:string, program_name:s
 		let lines = content.split("\n")
 		
 		if (lines != null && lines.length < 1500) {
-			change_filecontent(<div file-path={path} className={styles.Display}>
+			change_filecontent(<div className={styles.Display}>
+				<div className={styles.DisplayTitle}>
+					<div className={styles.DisplayTitleTitle}>{path}</div><div onClick={()=>{change_filecontent(<></>)}} className={styles.DisplayTitleX}> ✖ </div>
+				</div>
+				<div className={styles.DisplayLineParent}>
 				{lines.map((line, ln) => 
 				<div className={styles.DisplayLine}>
 					<div className={styles.DisplayLineNum}>
@@ -98,6 +102,7 @@ export default function projectdisplay(props:{parent_file:string, program_name:s
 						</pre>
 					</div>
 				</div>)}
+				</div>
 			</div>)
 		}
 		else {
@@ -107,7 +112,7 @@ export default function projectdisplay(props:{parent_file:string, program_name:s
 		}
 	}
   return (
-	<div>
+	<div className={styles.DisplayParent}>
 		<FileTree data={props.data} parent_file={props.parent_file} program_name={props.program_name} render={render_content}/>
 		{filecontent}
 	</div>
