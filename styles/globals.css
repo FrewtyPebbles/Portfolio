@@ -31,3 +31,22 @@ a {
     background: black;
   }
 }
+
+:root {
+  --title-color:rgb(190, 190, 190);
+  --body-root-text-color:rgb(221, 221, 221);
+}
+.title {
+  color: var(--title-color);
+  padding-left: 10px;
+}
+.sub-title {
+  padding-left: 20px;
+}
+.body-root {
+  color:var(--body-root-text-color);
+}
+.body-root p {
+  text-indent: 30px;
+  padding: 0 30px 0 30px;
+}

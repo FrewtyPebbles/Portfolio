@@ -1,6 +1,7 @@
 import { JSXElementConstructor, ReactElement, useEffect, useState } from "react";
 import styles from "./projectdisplay.module.scss"
 import React from 'react'
+import Image from 'next/image'
 
 export function FileNode(props:{name:string, content:string, path:string, render: (path: string, content: string) => void}) {
 	
@@ -80,35 +81,47 @@ export default function projectdisplay(props:{parent_file:string, program_name:s
 	
 	const render_content = (path:string, content:string) => {
 		let lines = content.split("\n")
-		
-		if (lines != null && lines.length < 1500) {
+		if (path.endsWith(".png") || path.endsWith (".jpg") || path.endsWith (".webp"))
+		{
 			change_filecontent(<div className={styles.Display}>
 				<div className={styles.DisplayTitle}>
 					<div className={styles.DisplayTitleTitle}>{path}</div><div onClick={()=>{change_filecontent(<></>)}} className={styles.DisplayTitleX}> ✖ </div>
 				</div>
-				<div className={styles.DisplayLineParent}>
-				{lines.map((line, ln) => 
-				<div className={styles.DisplayLine}>
-					<div className={styles.DisplayLineNum}>
-						<code>
-							{ln + 1}
-						</code>
-					</div>
-					<div className={styles.DisplayLineLine}>
-						<pre>
-							<code>
-								{line}
-							</code>
-						</pre>
-					</div>
-				</div>)}
+				<div style={{display:"flex", justifyContent:"space-around"}}>
+					<img className={styles.DisplayImage} src={"http://localhost:3000/" + path} alt={path}/>
 				</div>
 			</div>)
 		}
 		else {
-			change_filecontent(<div file-path={path} className={styles.Display}>
-				<span style={{paddingLeft:"30px"}}>This file is too large to render.</span>
-			</div>)
+			if (lines != null && lines.length < 1500) {
+				change_filecontent(<div className={styles.Display}>
+					<div className={styles.DisplayTitle}>
+						<div className={styles.DisplayTitleTitle}>{path}</div><div onClick={()=>{change_filecontent(<></>)}} className={styles.DisplayTitleX}> ✖ </div>
+					</div>
+					<div className={styles.DisplayLineParent}>
+					{lines.map((line, ln) => 
+					<div className={styles.DisplayLine}>
+						<div className={styles.DisplayLineNum}>
+							<code>
+								{ln + 1}
+							</code>
+						</div>
+						<div className={styles.DisplayLineLine}>
+							<pre>
+								<code>
+									{line}
+								</code>
+							</pre>
+						</div>
+					</div>)}
+					</div>
+				</div>)
+			}
+			else {
+				change_filecontent(<div file-path={path} className={styles.Display}>
+					<span style={{paddingLeft:"30px"}}>This file is too large to render.</span>
+				</div>)
+			}
 		}
 	}
   return (

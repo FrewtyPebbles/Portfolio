@@ -73,6 +73,10 @@ $col2:rgb(19, 19, 19);
 }
 
 .Display {
+	&Image {
+		width: fit-content;
+		height: fit-content;
+	}
 	&Parent {
 		display: flex;
 	}
