@@ -3,6 +3,10 @@
 		opacity: 0;
 		transform: translate(-50vw, 0px);
 	}
+	60% {
+		opacity: 0;
+		transform: translate(-50vw, 0px);
+	}
 	100% {
 		opacity: 100;
 		transform: translate(0px, 0px);
@@ -10,7 +14,7 @@
 }
 
 .SlideInRight {
-	animation: slide-in-right 3s ease;
+	animation: slide-in-right 5s ease;
 }
 
 @keyframes slide-in-left {
@@ -39,12 +43,15 @@
 			0% {
 				transform: translate(random(500) - 250 + px, random(500) - 250 + px);
 			}
+			50% {
+				transform: translate(random(500) - 250 + px, random(500) - 250 + px);
+			}
 			100% {
 				transform: translate(0px, 0px);
 			}
 		}
 		&:nth-child(#{$i}) {
-			animation: LetterClassChild#{$i} (5000 - $max * 100 + ms) ease;
+			animation: LetterClassChild#{$i} (8000 - $max * 100 + ms) ease;
 		}
 	}
 }
@@ -55,7 +62,7 @@
 		width: 1rem;
 	}
 	//goes to 11
-	@include nthrandomstart(15)
+	@include nthrandomstart(20);
 }
 
 .CenterContent {

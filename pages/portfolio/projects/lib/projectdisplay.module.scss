@@ -45,7 +45,7 @@ $col2:rgb(19, 19, 19);
 			content: "📂";
 		}
 		background-color: $col1;
-		border-radius: 10px 0 0 0;
+		border-radius: 0 0 0 0;
 	}
 	&Closed {
 		&:hover {
@@ -56,10 +56,11 @@ $col2:rgb(19, 19, 19);
 		}
 	}
 	&Insides {
+		//open left highlight
 		margin-left: 0px;
 		border-color: $col1;
 		border-style: none none none solid;
-		border-radius: 0 0 0 10px;
+		border-radius: 0 0 0 0;
 		border-width: 5px;
 		padding-left: 10px;
 		//padding-left: 10px;

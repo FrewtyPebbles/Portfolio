@@ -19,7 +19,7 @@ export default function Home(props: any) {
             Welcome to the portfolio of:
           </div>
           <h1 className={hstyles.SlideInRight}>
-            <LetterStyler letterclass={hstyles.LetterClass}>William Lim</LetterStyler>
+            <LetterStyler letterclass={hstyles.LetterClass}>William Andrew Lim</LetterStyler>
           </h1>
           <div className={`${hstyles.SlideInRight} ${hstyles.HeaderHint}`}>
             Click PROJECTS to open the project list.
