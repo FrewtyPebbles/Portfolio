@@ -4,7 +4,7 @@ import styles from './components.module.scss'
 
 export default function Download(props:{dl:downl}) {
   return (
-	<div className={styles.download}>
+	<div className={styles.download} onClick={() => props.dl.download()}>
 		<div>
 			<div style={{display:"inline-block"}} className={styles.downloadtitle}>{props.dl.title}</div> <code style={{paddingLeft:"5px"}} className={styles.downloadver}>{props.dl.ver()}</code>
 			<div style={{display:"inline-block"}} className={styles.downloadplatform}>{props.dl.platform}</div>

@@ -31,7 +31,7 @@ export default function Home(props:{body:string, route:string, filetree:{data:an
         <div className={styles.CenterContent}>
           {/* {currpage} */}
           <ProjectPage project={PROJECTS[props.route]}>
-          <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(props.body) }}></div>
+          <header dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(props.body) }}></header>
             <ProjectDisplay data={ft.filetree.data} parent_file={ft.filetree.parent_file} program_name={ft.filetree.program_name}/>
           </ProjectPage>
         </div>

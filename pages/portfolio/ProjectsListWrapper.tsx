@@ -23,7 +23,7 @@ export default function ProjectsListWrapper(props:any) {
 
   return (
 	<div className={styles.PageGrid}>
-    <div ref={content_ref}>
+    <div style={{height:"100%"}} ref={content_ref}>
       {/* all page content goes in here */}
       {props.children}
     </div>

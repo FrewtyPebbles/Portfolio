@@ -39,6 +39,7 @@ export default function ProjectsList(props: {cref:React.RefObject<HTMLDivElement
                 toggle_list(false)
               }, 990);
             }}>PROJECTS</div>
+            <Link href="/" className={styles.StaticLink}>Back To Home Page</Link>
             <div className={styles.ProjectListTitleSearch}>
               <input placeholder='Search' className={styles.ProjectListTitleSearchInput} type="text" onChange={e => { setSearch(e.target.value); }} value={search} />
             </div>

@@ -152,6 +152,31 @@
 	}
 }
 
+@keyframes static-link-hover {
+	0% {
+		padding-right: 5px;
+	}
+	50% {
+		padding-right: 10px;
+	}
+	100% {
+		padding-right: 5px;
+	}
+}
+
+.StaticLink {
+	padding-top: 3px;
+	&::before {
+		content: "◄";
+		padding-right: 5px;
+	}
+
+	&:hover::before {
+		content: "◄";
+		animation: static-link-hover infinite ease-in-out 500ms;
+	}
+}
+
 @keyframes project-appear {
 	from {
 		width: 0;

@@ -1,0 +1,68 @@
+@keyframes slide-in-right {
+	0% {
+		opacity: 0;
+		transform: translate(-50vw, 0px);
+	}
+	100% {
+		opacity: 100;
+		transform: translate(0px, 0px);
+	}
+}
+
+.SlideInRight {
+	animation: slide-in-right 3s ease;
+}
+
+@keyframes slide-in-left {
+	0% {
+		opacity: 0;
+		transform: translate(50vw, 0px);
+	}
+	100% {
+		opacity: 100;
+		transform: translate(0px, 0px);
+	}
+}
+
+.SlideInLeft {
+	animation: slide-in-left 3s ease;
+}
+
+.HeaderHint {
+	color: rgb(64, 64, 64);
+}
+
+
+@mixin nthrandomstart($max) {
+	@for $i from 1 through $max {
+		@keyframes LetterClassChild#{$i} {
+			0% {
+				transform: translate(random(500) - 250 + px, random(500) - 250 + px);
+			}
+			100% {
+				transform: translate(0px, 0px);
+			}
+		}
+		&:nth-child(#{$i}) {
+			animation: LetterClassChild#{$i} (5000 - $max * 100 + ms) ease;
+		}
+	}
+}
+
+.LetterClass {
+	display: inline-block;
+	&:empty {
+		width: 1rem;
+	}
+	//goes to 11
+	@include nthrandomstart(15)
+}
+
+.CenterContent {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	overflow-x: hidden;
+  }

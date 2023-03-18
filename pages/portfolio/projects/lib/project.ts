@@ -82,10 +82,12 @@ export class Download {
 	format:string;
 	version:Version;
 	platform:Platform;
+
 	constructor(filename:string,
 		title:string,
 		format:string,
-		version:[number,number,number], platform:Platform = Platform.Win) {
+		version:[number,number,number],
+		platform:Platform = Platform.Win) {
 		this.filename = filename;
 		this.title = title;
 		this.format = format;
@@ -94,6 +96,9 @@ export class Download {
 	}
 	ver() {
 		return this.version.toString();
+	}
+	download(){
+		window.open(`/projects/${this.title}/downloads/${this.filename}`, '_self');
 	}
 }
 
