@@ -1,15 +1,16 @@
 import styles from './../../styles/Home.module.scss'
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import ProjectsListWrapper from './ProjectsListWrapper'
-import ProjectPage from './projects/project page/ProjectPage'
-import { PROJECTS } from '../globals'
-import ProjectDisplay, { fetch_display_files } from './projects/lib/ProjectDisplay'
+import ProjectsListWrapper from '../../components/ProjectsListWrapper'
+import ProjectPage from '../../components/projects/project page/ProjectPage'
+import { PROJECTS } from '../../components/globals'
+import ProjectDisplay, { fetch_display_files } from '../../components/projects/lib/ProjectDisplay'
 import path from 'path'
 import DOMPurify from 'isomorphic-dompurify'
-import p_style from './project.module.scss'
+import p_style from '../../components/project.module.scss'
+import axios from "axios";
 
 
-const slug = (url:any) => new URL(url).pathname.match(/[^\/]+/g);
+function slug(url:any){return new URL(url).pathname.match(/[^\/]+/g)};
 
 export default function Home(props:{body:string, route:string, filetree:{data:any, program_name:string, parent_file:string}}) {
   
@@ -22,7 +23,6 @@ export default function Home(props:{body:string, route:string, filetree:{data:an
   const [ft, changeft] = useState(props)
   useEffect(() => {
     refresh()
-    console.log(ft)
   }, [props === ft])
 
   
@@ -44,7 +44,7 @@ export default function Home(props:{body:string, route:string, filetree:{data:an
 export async function getStaticPaths() {
   let paths:{paths:{params: {project: string}}[], fallback:boolean} = {
     paths: [],
-    fallback: true
+    fallback: false
   }
   for (let key of Object.keys(PROJECTS)) {
     paths.paths.push({params: {project: key}})
@@ -55,10 +55,13 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }:any) {
   // params contains the post `id`.
   // If the route is like /posts/1, then params.id is 1
-  let body = await (await fetch(path.join("http://localhost:3000/projects", params.project, "body.html"))).text()
-  let data = await fetch_display_files("root", params.project);
-  console.log("DATA :::  ? ? :::");
-  console.log(data)
+  let body = await (await fetch("http://127.0.0.1:5000/body", {
+    headers: {
+      "program_name":params.project
+    }
+  })).text()
+  let data = {}
+  data = await fetch_display_files("root", params.project);
   // Pass post data to the page via props
   return { props: { body, route:params.project, filetree:{data:data, program_name:params.project, parent_file:""} } }
 }

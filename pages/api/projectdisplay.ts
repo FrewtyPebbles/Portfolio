@@ -28,7 +28,6 @@ export default function handler(
                     }
                     else if (dirent.isDirectory()) {
                         //go into dir
-                        //namestack.push(dirent.name);
                         client_path = path.join(client_path, dirent.name)
                         f_path = path.join(f_path, dirent.name)
                         stack.push({})

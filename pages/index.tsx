@@ -1,10 +1,10 @@
 import styles from '../styles/Home.module.scss'
-import { Project } from './portfolio/projects/lib/project'
+import Project from '../components/projects/lib/project'
 import React, { useEffect, useState } from 'react'
-import ProjectsListWrapper from './portfolio/ProjectsListWrapper'
+import ProjectsListWrapper from '../components/ProjectsListWrapper'
 import Link from 'next/link'
-import hstyles from './(Home Components)/HomeStyles.module.scss'
-import LetterStyler from './(Home Components)/LetterStyler'
+import hstyles from '../components/(Home Components)/HomeStyles.module.scss'
+import LetterStyler from '../components/(Home Components)/LetterStyler'
 
 
 export default function Home(props: any) {
@@ -21,6 +21,11 @@ export default function Home(props: any) {
           <h1 className={hstyles.SlideInRight}>
             <LetterStyler letterclass={hstyles.LetterClass}>William Andrew Lim</LetterStyler>
           </h1>
+          <div className={hstyles.SlideInLeft}>
+          <div style={{padding:"5px"}} className={hstyles.SlideInLeft}>
+          <a href = "mailto: William.Lim@csu.fullerton.edu">William.Lim@csu.fullerton.edu</a>
+          </div>
+          </div>
           <div className={`${hstyles.SlideInRight} ${hstyles.HeaderHint}`}>
             Click PROJECTS to open the project list.
           </div>
