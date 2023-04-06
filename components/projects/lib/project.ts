@@ -1,4 +1,6 @@
 
+
+
 class Version {
 	ver:[number,number,number];
 	constructor(ver:[number,number,number]) {
@@ -28,7 +30,7 @@ export class Docs {
 	pages:{[index: string]:string} = {}; // associative array with page title and path to page as value
 	constructor(program_name:string) {
 		this.program_name = program_name;
-		fetch("http://127.0.0.1:5000/docs", {
+		fetch(`http://194.163.45.40:5000/docs`, {
 			headers: {
 				"program_name": this.program_name
 			}
@@ -42,7 +44,7 @@ export class Docs {
 	async renderpage(page_title:string) {
 		// Use remark to convert markdown into HTML string
 		if (Object.keys(this.pages).length <= 0) {
-			await fetch("http://127.0.0.1:5000/docs", {
+			await fetch(`http://194.163.45.40:5000/docs`, {
 				headers: {
 					"program_name": this.program_name
 				}
@@ -85,7 +87,7 @@ export class Download {
 		return this.version.toString();
 	}
 	download(){
-		window.open(`http://127.0.0.1:5000/static/projects/${this.title}/downloads/${this.filename}`, '_self');
+		window.open(`http://194.163.45.40:5000/static/projects/${this.title}/downloads/${this.filename}`, '_self');
 	}
 }
 
@@ -99,7 +101,7 @@ export default class Project {
 	downloads:Download[];
 	docs:Docs;
 	constructor(iconpath:string, title:string, version:[number,number,number], description:string, tags:string[], downloads:Download[] = []) {
-		this.iconpath = "http://localhost:3000/" + iconpath;
+		this.iconpath = "http://194.163.45.40:3000/" + iconpath;
 		this.title = title;
 		this.description = description;
 		this.tags = tags;

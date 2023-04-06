@@ -1,5 +1,7 @@
 import Project, { Download, Platform } from "./projects/lib/project";
 
+export const IP = "194.163.45.40"
+
 export const PROJECTS:{[index:string]:Project} = {
 	"Neat Object Notation":new Project("favicon.ico", "Neat Object Notation", [0,6,16], "A smart and modular object notation.", ["neat", "package", "compiler", "serialize", "serializer", "rust", "python", "notation", "object", "config", "interpreter", "serialization", "dict", "cargo", "pyo3", "pip", "module", "pypi", "list", "dictionary", "datastructure", "datastructures"], [new Download("Neat.zip", "Neat Object Notation", "zip", [0,6,16], Platform.Win)])
 	.set_body("Neat is scaleable and versatile.  Neat is designed to be used as a python module."),

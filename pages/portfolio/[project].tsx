@@ -2,13 +2,10 @@ import styles from './../../styles/Home.module.scss'
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import ProjectsListWrapper from '../../components/ProjectsListWrapper'
 import ProjectPage from '../../components/projects/project page/ProjectPage'
-import { PROJECTS } from '../../components/globals'
+import { PROJECTS, IP } from '../../components/globals'
 import ProjectDisplay, { fetch_display_files } from '../../components/projects/lib/ProjectDisplay'
-import path from 'path'
 import DOMPurify from 'isomorphic-dompurify'
 import p_style from '../../components/project.module.scss'
-import axios from "axios";
-
 
 function slug(url:any){return new URL(url).pathname.match(/[^\/]+/g)};
 
@@ -55,7 +52,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }:any) {
   // params contains the post `id`.
   // If the route is like /posts/1, then params.id is 1
-  let body = await (await fetch("http://127.0.0.1:5000/body", {
+  let body = await (await fetch(`http://${IP}:5000/body`, {
     headers: {
       "program_name":params.project
     }

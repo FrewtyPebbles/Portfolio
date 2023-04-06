@@ -4,6 +4,7 @@ import React from 'react'
 import Image from 'next/image'
 import axios from "axios";
 import { log } from "console";
+import { IP } from "../../globals";
 
 export function FileNode(props:{name:string, content:string, path:string, render: (path: string, content: string) => void}) {
 	
@@ -40,7 +41,7 @@ export function FolderNode (props:{open:boolean, foldername:string, children:Rea
 
 export async function fetch_display_files(parent_file:string, program_name:string) {
 	//send path to api
-	let res = await fetch("http://127.0.0.1:5000/content", {
+	let res = await fetch(`http://${IP}:5000/content`, {
 		headers: {
 			"path": parent_file,
 			"program_name": program_name,
